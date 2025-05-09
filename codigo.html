@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1 Mês de Amor 💕</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(-45deg, #7b2cbf, #ff4d6d, #c77dff, #ff85a1);
+        background-size: 400% 400%;
+        animation: gradientBG 10s ease infinite;
+        font-family: "Arial", sans-serif;
+        overflow: hidden;
+        color: white;
+      }
+    
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        opacity: 1;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    
+      button {
+        background: #a029a0;
+        color: white;
+        border: none;
+        padding: 20px 40px;
+        font-size: 24px;
+        border-radius: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        max-width: 90vw;
+      }
+    
+      button:hover {
+        background: #e6005c;
+        transform: scale(1.05);
+      }
+    
+      #hearts-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+        overflow: hidden;
+      }
+    
+      .heart {
+        color: #ff3c6f;
+        font-size: 24px;
+        position: absolute;
+        bottom: 0;
+        animation: floatUp 5s linear forwards;
+        text-shadow: 0 0 10px rgba(255, 92, 138, 0.8);
+      }
+    
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh);
+          opacity: 0;
+        }
+      }
+    
+      #typed-text {
+        margin-top: 40px;
+        font-size: 26px;
+        color: #fff;
+        max-width: 90vw;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+    
+      #hidden-message {
+        display: none;
+        margin-top: 50px;
+        font-size: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 90vw;
+        line-height: 1.6;
+      }
+    
+      /* Responsividade para telas menores */
+      @media screen and (max-width: 600px) {
+        button {
+          padding: 15px 25px;
+          font-size: 18px;
+        }
+    
+        #typed-text {
+          font-size: 20px;
+        }
+    
+        #hidden-message {
+          font-size: 16px;
+          margin-top: 30px;
+        }
+    
+        .heart {
+          font-size: 18px;
+        }
+      }
+    </style>
+    
+  </head>
+  <body>
+    <audio id="bg-music">
+      <source src="musica_amor.m4a" type="audio/mpeg" />
+      Seu navegador não suporta áudio.
+    </audio>
+    <button id="proposal-button" style="margin-top: 20px; display: none">
+      Tenho uma pergunta pra você 💍
+    </button>
+
+    <div class="container" id="main-content">
+      <button id="start-button">Clique para Começar Tudo 💕</button>
+      <div id="typed-text"></div>
+      <div id="hidden-message">
+        <p>
+          Obrigada por ser meu amor, meu porto seguro e meu melhor presente. Que
+          venham muitos e muitos meses juntinhos! 💜❤️
+        </p>
+      </div>
+    </div>
+
+    <div id="hearts-container"></div>
+
+    <script>
+      const music = document.getElementById("bg-music");
+      const startButton = document.getElementById("start-button");
+      const typedText = document.getElementById("typed-text");
+      const hiddenMessage = document.getElementById("hidden-message");
+
+      function createFloatingHearts() {
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.classList.add("heart");
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.innerHTML = '<i class="fas fa-heart"></i>';
+          document.getElementById("hearts-container").appendChild(heart);
+          setTimeout(() => heart.remove(), 5000);
+        }, 250);
+      }
+
+      startButton.addEventListener("click", async () => {
+        try {
+          await music.play(); // só funciona após interação do usuário
+        } catch (e) {
+          console.warn("Não foi possível tocar a música automaticamente.");
+        }
+
+        Swal.fire({
+          title: "Nosso momento 💑",
+          text: "Feliz 1 mês de namoro!",
+          imageUrl: "foto.jpg", // Substitua com o caminho da sua foto
+          imageWidth: 200,
+          imageHeight: 300,
+          imageAlt: "Foto do casal fofo",
+          confirmButtonText: "Te amo ❤️",
+        }).then(() => {
+          anime({
+            targets: "#main-content",
+            opacity: [0, 1],
+            duration: 1500,
+            easing: "easeInOutQuad",
+          });
+
+          new Typed("#typed-text", {
+            strings: [
+              "Você é o meu amor, minha melhor amiga, meu tudo.",
+              "1 mês já se passou, e eu só quero mais e mais de você.",
+              "Obrigada por existir, por me amar e me fazer tão feliz 💖",
+              "Que esse seja só o começo da nossa jornada💖!",
+              "Te amo, minha princesa, minha morena💖!",
+            ],
+            typeSpeed: 80,
+            backSpeed: 90,
+            showCursor: true,
+            loop: false,
+            onComplete: () => {
+              hiddenMessage.style.display = "block";
+            },
+          });
+
+          createFloatingHearts();
+        });
+      });
+
+
+      // Quando a música terminar, mostra o botão da pergunta
+      music.addEventListener("ended", () => {
+        const proposalBtn = document.getElementById("proposal-button");
+        proposalBtn.style.display = "inline-block";
+        anime({
+          targets: "#proposal-button",
+          opacity: [0, 1],
+          duration: 1000,
+          easing: "easeInOutQuad",
+        });
+      });
+      document
+        .getElementById("proposal-button")
+        .addEventListener("click", () => {
+          Swal.fire({
+            title: "💍 Uma pergunta...",
+            text: "Você quer passar muitos outros meses comigo?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Sim 💖",
+            cancelButtonText: "Claro 😍",
+            reverseButtons: true,
+          }).then((result) => {
+            if (
+              result.isConfirmed ||
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              Swal.fire({
+                title: "Resposta certa!",
+                text: "Eu te amo. ❤️",
+                icon: "success",
+                confirmButtonText: "Também te amo!",
+              });
+            }
+          });
+        });
+    </script>
+  </body>
+</html>
