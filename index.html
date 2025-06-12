@@ -104,15 +104,31 @@
   </style>
 </head>
 <body>
-<button id="play-music-btn" class="message-button">Clique para Ouvir 💖</button>
-<audio id="bg-music" loop>
+  <!-- Tela de boas-vindas -->
+  <div id="intro-screen" style="
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  ">
+    <h2 style="color: white; text-align: center;">Clique para começar com amor 💖</h2>
+    <button id="play-music-btn" class="message-button">Clique para Ouvir 💖</button>
+  </div>
+
+  <!-- Música -->
+  <audio id="bg-music" loop>
     <source src="amor.m4a" type="audio/mpeg">
     Seu navegador não suporta o elemento de áudio.
-</audio>
+  </audio>
 
- 
-
-  <div class="container">
+  <!-- Conteúdo principal (inicialmente oculto) -->
+  <div class="container" style="display: none;" id="main-content">
     <h1>Feliz Dia dos Namorados 💘</h1>
     <div id="carousel">
       <img src="foto.jpg" class="active" alt="Foto 1">
@@ -149,13 +165,18 @@
         confirmButtonText: "Te amo! 💖"
       });
     }
- document.getElementById("play-music-btn").addEventListener("click", () => {
-  const music = document.getElementById("bg-music");
-  music.play();
-  document.getElementById("play-music-btn").style.display = "none"; // Esconde o botão após tocar
-});
 
-
+    // Libera o site só após clicar no botão
+    document.getElementById("play-music-btn").addEventListener("click", () => {
+      const music = document.getElementById("bg-music");
+      music.play().then(() => {
+        document.getElementById("intro-screen").style.display = "none"; // esconde a tela de boas-vindas
+        document.getElementById("main-content").style.display = "flex"; // mostra o conteúdo
+      }).catch((err) => {
+        alert("Clique novamente para ativar o áudio.");
+      });
+    });
   </script>
 </body>
+
 </html>
