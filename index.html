@@ -104,10 +104,13 @@
   </style>
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
+<button id="play-music-btn" class="message-button">Clique para Ouvir 💖</button>
+<audio id="bg-music" loop>
     <source src="amor.m4a" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
+    Seu navegador não suporta o elemento de áudio.
+</audio>
+
+ 
 
   <div class="container">
     <h1>Feliz Dia dos Namorados 💘</h1>
@@ -146,22 +149,12 @@
         confirmButtonText: "Te amo! 💖"
       });
     }
-    window.addEventListener('load', () => {
+ document.getElementById("play-music-btn").addEventListener("click", () => {
   const music = document.getElementById("bg-music");
-
-  // Tenta tocar automaticamente
-  const playPromise = music.play();
-
-  if (playPromise !== undefined) {
-    playPromise
-      .then(() => {
-        console.log("Música começou automaticamente.");
-      })
-      .catch((error) => {
-        console.warn("Autoplay falhou. Provavelmente o navegador bloqueou.");
-      });
-  }
+  music.play();
+  document.getElementById("play-music-btn").style.display = "none"; // Esconde o botão após tocar
 });
+
 
   </script>
 </body>
