@@ -1,267 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>1 Mês de Amor 💕</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(-45deg, #7b2cbf, #ff4d6d, #c77dff, #ff85a1);
-        background-size: 400% 400%;
-        animation: gradientBG 10s ease infinite;
-        font-family: "Arial", sans-serif;
-        overflow: hidden;
-        color: white;
-      }
-    
-      @keyframes gradientBG {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-    
-      .container {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        opacity: 1;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-    
-      button {
-        background: #a029a0;
-        color: white;
-        border: none;
-        padding: 20px 40px;
-        font-size: 24px;
-        border-radius: 15px;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: 0.3s;
-        max-width: 90vw;
-      }
-    
-      button:hover {
-        background: #e6005c;
-        transform: scale(1.05);
-      }
-    
-      #hearts-container {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: -1;
-        overflow: hidden;
-      }
-    
-      .heart {
-        color: #ff3c6f;
-        font-size: 24px;
-        position: absolute;
-        bottom: 0;
-        animation: floatUp 5s linear forwards;
-        text-shadow: 0 0 10px rgba(255, 92, 138, 0.8);
-      }
-    
-      @keyframes floatUp {
-        0% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100vh);
-          opacity: 0;
-        }
-      }
-    
-      #typed-text {
-        margin-top: 40px;
-        font-size: 26px;
-        color: #fff;
-        max-width: 90vw;
-        font-weight: bold;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      }
-    
-      #hidden-message {
-        display: none;
-        margin-top: 50px;
-        font-size: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 20px;
-        border-radius: 12px;
-        max-width: 90vw;
-        line-height: 1.6;
-      }
-    
-      /* Responsividade para telas menores */
-      @media screen and (max-width: 600px) {
-        button {
-          padding: 15px 25px;
-          font-size: 18px;
-        }
-    
-        #typed-text {
-          font-size: 20px;
-        }
-    
-        #hidden-message {
-          font-size: 16px;
-          margin-top: 30px;
-        }
-    
-        .heart {
-          font-size: 18px;
-        }
-      }
-    </style>
-    
-  </head>
-  <body>
-    <audio id="bg-music">
-      <source src="musica_amor.m4a" type="audio/mpeg" />
-      Seu navegador não suporta áudio.
-    </audio>
-    <button id="proposal-button" style="margin-top: 20px; display: none">
-      Tenho uma pergunta pra você 💍
-    </button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Dia dos Namorados 💘</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-    <div class="container" id="main-content">
-      <button id="start-button">Clique para Começar Tudo 💕</button>
-      <div id="typed-text"></div>
-      <div id="hidden-message">
-        <p>
-          Obrigado por ser meu amor, meu porto seguro e meu melhor presente. Que
-          venham muitos e muitos meses juntinhos! 💜❤️
-        </p>
-      </div>
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    }
+
+    #carousel {
+      position: relative;
+      width: 90vw;
+      max-width: 350px;
+      height: 350px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+    }
+
+    #carousel img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      width: 100%;
+      height: 100%;
+    }
+
+    #carousel img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .message-button {
+      margin-top: 30px;
+      padding: 14px 26px;
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .message-button:hover {
+      background-color: #ff1e56;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      #carousel {
+        height: 280px;
+        max-width: 90vw;
+      }
+      .message-button {
+        font-size: 14px;
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="musica_dia_dos_namorados.m4a" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <div class="container">
+    <h1>Feliz Dia dos Namorados 💘</h1>
+    <div id="carousel">
+      <img src="foto.jpg" class="active" alt="Foto 1">
+      <img src="foto2.jpg" alt="Foto 2">
+      <img src="foto3.jpg" alt="Foto 3">
+      <img src="foto4.jpg" alt="Foto 4">
     </div>
+    <button class="message-button" onclick="showMessage()">Tenho algo pra te dizer 💌</button>
+  </div>
 
-    <div id="hearts-container"></div>
+  <script>
+    const images = document.querySelectorAll('#carousel img');
+    let current = 0;
 
-    <script>
-      const music = document.getElementById("bg-music");
-      const startButton = document.getElementById("start-button");
-      const typedText = document.getElementById("typed-text");
-      const hiddenMessage = document.getElementById("hidden-message");
+    function cycleImages() {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }
 
-      function createFloatingHearts() {
-        setInterval(() => {
-          const heart = document.createElement("div");
-          heart.classList.add("heart");
-          heart.style.left = Math.random() * 100 + "vw";
-          heart.innerHTML = '<i class="fas fa-heart"></i>';
-          document.getElementById("hearts-container").appendChild(heart);
-          setTimeout(() => heart.remove(), 5000);
-        }, 250);
-      }
+    setInterval(cycleImages, 3000); // troca a cada 3 segundos
 
-      startButton.addEventListener("click", async () => {
-        try {
-          await music.play(); // só funciona após interação do usuário
-        } catch (e) {
-          console.warn("Não foi possível tocar a música automaticamente.");
-        }
-
-        Swal.fire({
-          title: "Nosso momento 💑",
-          text: "Feliz 1 mês de namoro!",
-          imageUrl: "foto.jpg", // Substitua com o caminho da sua foto
-          imageWidth: 200,
-          imageHeight: 300,
-          imageAlt: "Foto do casal fofo",
-          confirmButtonText: "Te amo ❤️",
-        }).then(() => {
-          anime({
-            targets: "#main-content",
-            opacity: [0, 1],
-            duration: 1500,
-            easing: "easeInOutQuad",
-          });
-
-          new Typed("#typed-text", {
-            strings: [
-              "Você é o meu amor, minha melhor amiga, meu tudo.",
-              "1 mês já se passou, e eu só quero mais e mais de você.",
-              "Obrigado por existir, por me amar e me fazer tão feliz 💖",
-              "Que esse seja só o começo da nossa jornada💖!",
-              "Te amo, minha princesa, minha morena💖!",
-            ],
-            typeSpeed: 70,
-            backSpeed: 90,
-            showCursor: true,
-            loop: false,
-            onComplete: () => {
-              hiddenMessage.style.display = "block";
-            },
-          });
-
-          createFloatingHearts();
-        });
+    function showMessage() {
+      Swal.fire({
+        title: "Mensagem Especial 💝",
+        html: "<p>Estar com você é o melhor presente que a vida me deu.</p><p>Que este Dia dos Namorados seja apenas o primeiro de muitos! 💕</p>",
+        icon: "heart",
+        confirmButtonText: "Te amo! 💖"
       });
-
-
-      // Quando a música terminar, mostra o botão da pergunta
-      music.addEventListener("ended", () => {
-        const proposalBtn = document.getElementById("proposal-button");
-        proposalBtn.style.display = "inline-block";
-        anime({
-          targets: "#proposal-button",
-          opacity: [0, 1],
-          duration: 1000,
-          easing: "easeInOutQuad",
-        });
-      });
-      document
-        .getElementById("proposal-button")
-        .addEventListener("click", () => {
-          Swal.fire({
-            title: "💍 Uma pergunta...",
-            text: "Você quer passar muitos outros meses comigo?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: "Sim 💖",
-            cancelButtonText: "Claro 😍",
-            reverseButtons: true,
-          }).then((result) => {
-            if (
-              result.isConfirmed ||
-              result.dismiss === Swal.DismissReason.cancel
-            ) {
-              Swal.fire({
-                title: "Resposta certa!",
-                text: "Eu te amo. ❤️",
-                icon: "success",
-                confirmButtonText: "Também te amo!",
-              });
-            }
-          });
-        });
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
