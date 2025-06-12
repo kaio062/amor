@@ -157,14 +157,15 @@
 
     setInterval(cycleImages, 3000); // troca a cada 3 segundos
 
-    function showMessage() {
-      Swal.fire({
-        title: "Mensagem Especial 💝",
-        html: "<p>Estar com você é o melhor presente que a vida me deu.</p><p>Que este Dia dos Namorados seja apenas o primeiro de muitos! 💕</p>",
-        icon: "heart",
-        confirmButtonText: "Te amo! 💖"
-      });
-    }
+function showMessage() {
+  Swal.fire({
+    title: "Mensagem Especial 💝",
+    html: "<p>Ter você ao meu lado é o maior presente que a vida me deu.</p><p>Que este seja apenas o começo de muitos Dias dos Namorados que ainda vamos viver — juntos, com amor e carinho sem fim, minha morena linda, Te amo. 💖</p>",
+    icon: "info", // "heart" não é um ícone válido do SweetAlert2, use "info" ou remova o ícone
+    confirmButtonText: "Tambem, Te amo! 💖"
+  });
+}
+
 
     // Libera o site só após clicar no botão
     document.getElementById("play-music-btn").addEventListener("click", () => {
