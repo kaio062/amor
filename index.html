@@ -146,6 +146,23 @@
         confirmButtonText: "Te amo! 💖"
       });
     }
+    window.addEventListener('load', () => {
+  const music = document.getElementById("bg-music");
+
+  // Tenta tocar automaticamente
+  const playPromise = music.play();
+
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        console.log("Música começou automaticamente.");
+      })
+      .catch((error) => {
+        console.warn("Autoplay falhou. Provavelmente o navegador bloqueou.");
+      });
+  }
+});
+
   </script>
 </body>
 </html>
